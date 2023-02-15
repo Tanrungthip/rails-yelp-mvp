@@ -1,0 +1,43 @@
+<div class="container mt-3">
+    <div class="d-flex justify-content-between">
+      <h1><%= @restaurant.name %></h1>
+      <%= link_to '<- Back', restaurants_path, class: 'text-primary text-decoration-none'%>
+    </div>
+
+  <div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src= "http://source.unsplash.com/featured/?restaurant&#{rand(1000)}/800x333" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title"><h1><%= @restaurant.name %></h1></h5>
+          <p class="card-text"><%= @restaurant.address %></p>
+          <p class="card-text"><small class="text-muted"><%= @restaurant.phone_number %></small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+    <h3> Reviews <%= link_to '+',	new_restaurant_review_path(@restaurant)%> </h3>
+    <ul>
+      <% @restaurant.reviews.each do |review| %>
+        <li>
+        <% review.rating.times do %>
+          <i class="fas fa-star"></i>
+        <% end %>
+        <% (5 - review.rating).times do %>
+          <i class="far fa-star"></i>
+        <% end %><br>
+        <%= review.content %></li>
+      <% end %>
+    </ul>
+</div>
+
+<%# </li><%= link_to '+', review_path(review), data: {turbo_method: :delete, turbo_confirm: 'Delete Review?'} %>
+
+        <%# <p>Phone number: <%= @restaurant.phone_number %>
+        <%# <p>Address: <%= @restaurant.address %>
+        <%# <p>Category: <%= @restaurant.category %>
