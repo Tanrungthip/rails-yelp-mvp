@@ -12,14 +12,14 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to restaurant_path(@restaurant)
     else
-      render :new, status: :unproccessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
   private
 
   def review_params
-    params.require(:review).permit(:content, :rating)
+    params.require(:review).permit(:rating, :content)
     # and now it permit is true (protect our form)
   end
 end

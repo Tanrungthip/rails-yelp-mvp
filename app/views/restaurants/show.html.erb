@@ -19,8 +19,6 @@
     </div>
   </div>
 
-
-
     <h3> Reviews <%= link_to '+',	new_restaurant_review_path(@restaurant)%> </h3>
     <ul>
       <% @restaurant.reviews.each do |review| %>
